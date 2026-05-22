@@ -29,6 +29,8 @@ from ..helper.telegram_helper.message_utils import (
 
 @new_task
 async def start(_, message):
+    if not await CustomFilters.authorized(_, message):
+        return
     userid = message.from_user.id
     lang = Language()
     buttons = ButtonMaker()
